@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+<title>Pokemon Quiz</title>
+<style>
+body, html {
+    cursor: url(pokeball.png), pointer;
+}
+</style>
+<link href="css/survey.css" type="text/css" rel="stylesheet" />
+<script src="../jquery-3.1.1.min.js"></script>
+<script src="./survey.jquery.min.js"></script>
+	</head>
+	<body>
+<div id="surveyContainer"></div>
+<script>
+var surveyJSON = {
+ pages: [
+  {
+   name: "page1",
+   questions: [
+    {
+     type: "radiogroup",
+     choices: [
+      {
+       value: "1",
+       text: "have edible spaghetti hair that regrows every night?"
+      },
+      {
+       value: "2",
+       text: "sweat maple syrup?"
+      }
+     ],
+     isRequired: true,
+     name: "1",
+     title: "Would you rather:"
+    },
+    {
+     type: "radiogroup",
+     choices: [
+      {
+       value: "1",
+       text: "be famous when you are alive and forgotten when you die?"
+      },
+      {
+       value: "2",
+       text: "unknown when you are alive but famous after you die?"
+      }
+     ],
+     isRequired: true,
+     name: "2",
+     title: "Would you rather:"
+    },
+    {
+     type: "radiogroup",
+     choices: [
+      {
+       value: "1",
+       text: "have skin that changes color based on your emotions?"
+      },
+      {
+       value: "2",
+       text: "have tattoos appear all over your body depicting what you did yesterday?"
+      }
+     ],
+     isRequired: true,
+     name: "3",
+     title: "Would you rather:"
+    },
+    {
+     type: "radiogroup",
+     choices: [
+      {
+       value: "1",
+       text: "randomly time travel +/- 20 years every time you fart?"
+      },
+      {
+       value: "2",
+       text: "teleport to a different place on earth (on land, not water) every time you sneeze?"
+      }
+     ],
+     isRequired: true,
+     name: "4",
+     title: "Would you rather:"
+    },
+    {
+     type: "radiogroup",
+     choices: [
+      {
+       value: "1",
+       text: "be a reverse centaur?"
+      },
+      {
+       value: "2",
+       text: "be a reverse mermaid/merman?"
+      }
+     ],
+     isRequired: true,
+     name: "5",
+     title: "Would you rather:"
+    },
+    {
+     type: "radiogroup",
+     choices: [
+      {
+       value: "1",
+       text: "have an unlimited international first class ticket?"
+      },
+      {
+       value: "2",
+       text: "never have to pay for food at restaurants?"
+      }
+     ],
+     isRequired: true,
+     name: "6",
+     title: "Would you rather:"
+    },
+    {
+     type: "radiogroup",
+     choices: [
+      {
+       value: "1",
+       text: "not be able to open any closed doors (locked or unlocked)?"
+      },
+      {
+       value: "2",
+       text: "not be able to close any open doors?"
+      }
+     ],
+     isRequired: true,
+     name: "7",
+     title: "Would you rather:"
+    },
+    {
+     type: "radiogroup",
+     choices: [
+      {
+       value: "1",
+       text: "have a clown only you can see that follows you everywhere and just stands silently in a corner watching you without doing or saying anything?"
+      },
+      {
+       value: "2",
+       text: "have a real life stalker who dresses like the Easter bunny that everyone can see?"
+      }
+     ],
+     isRequired: true,
+     name: "8",
+     title: "Would you rather:"
+    },
+    {
+     type: "radiogroup",
+     choices: [
+      {
+       value: "1",
+       text: "be alone for the rest of your life?"
+      },
+      {
+       value: "2",
+       text: "always be surrounded by annoying people?"
+      }
+     ],
+     isRequired: true,
+     name: "9",
+     title: "Would you rather:"
+    },
+    {
+     type: "matrix",
+     columns: [
+      {
+       value: "1",
+       text: "Very disappointed"
+      },
+      {
+       value: "2",
+       text: "Disappointed"
+      },
+      {
+       value: "3",
+       text: "Somewhat disappointed"
+      },
+      {
+       value: "4",
+       text: "Neutral"
+      },
+      {
+       value: "5",
+       text: "Somewhat pleased"
+      },
+      {
+       value: "6",
+       text: "Pleased"
+      },
+      {
+       value: "7",
+       text: "Very pleased"
+      }
+     ],
+     isRequired: true,
+     name: "10",
+     rows: [
+      {
+       value: "1",
+       text: " "
+      }
+     ],
+     title: "How do you feel about the BYU Computer Science department?"
+    }
+   ]
+  }
+ ]
+};
+var survey = new Survey.Model(surveyJSON);
+console.log("START");
+
+$("#surveyContainer").Survey({
+    model: survey,
+    onComplete: sendDataToServer
+});
+
+function toBinaryString(data) {
+	if (data == "1") {
+		return "0";
+	} else {
+		return "1";
+	}
+}
+
+function sendDataToServer(survey) {
+    //send Ajax request to your web server.
+    //alert("The results are:" + JSON.stringify(survey.data));
+	var j = survey.data;
+	var binaryString = "";
+	for (i = 1; i <= 9; i++) {
+        var stringIndex = "" + i;
+	binaryString = toBinaryString(j[stringIndex]) + binaryString;
+	}
+	var rating = parseInt(j["10"]["1"]);
+	var result = parseInt(binaryString, 2) + rating;
+	window.location = './display.html?num=' + result;
+}
+</script>
+	</body>
+</html>

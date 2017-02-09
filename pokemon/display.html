@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+<title>Pokemon Result</title>
+<style>
+body, html {
+    cursor: url(pokeball.png), pointer;
+}
+</style>
+	</head>
+	<body>
+Your Pokemon is: <p id="write"></p>
+<img id ="front" height='300px'></img>
+	</body>
+<script src="../jquery-3.1.1.min.js"></script>
+<script>
+var str = window.location.search;
+var parameter = str.substr(5);
+theURL = "http://pokeapi.co/api/v2/pokemon/" + parameter;
+httpGetAsync(theURL, actions);
+
+function httpGetAsync(theUrl, callback)
+{
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.onreadystatechange = function() { 
+        if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+            callback(xmlHttp.responseText);
+    }
+    xmlHttp.open("GET", theUrl, true); // true for asynchronous 
+    xmlHttp.send(null);
+}
+
+function actions(response) {
+
+var j = JSON.parse(response);
+document.getElementById("write").innerHTML = j["name"].toUpperCase();
+var j2 = j["forms"];
+for(var k in j2) {
+   var j3 = j2[k];
+}
+var u = j3["url"];
+httpGetAsync(u, showImage);
+}
+
+function showImage(response) {
+var j = JSON.parse(response);
+var j2 = j["sprites"];
+document.getElementById("front").src = j2["front_default"];
+}
+
+</script>
+</html>
