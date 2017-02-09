@@ -73,7 +73,7 @@ function comparePositions( p1, p2 ) {
 function getPokemon(div) {
     var num = Math.floor(Math.random() * 721)
     console.log(num);
-    var url = `http://pokeapi.co/api/v2/pokemon/${num}`;
+    var url = 'http://pokeapi.co/api/v2/pokemon/'+ num.toString();
     console.log(url);
     $.get( url , function( data ) {
         console.log('success');
@@ -82,9 +82,9 @@ function getPokemon(div) {
         var poke = {};
         poke.name = data.forms[0].name;
         poke.sprite = data.sprites.front_default;
-        div.css('background-image',`url(${poke.sprite})`);
+        div.css('background-image','url('+poke.sprite+')');
         animateDiv();
-        alert(`You found a ${poke.name}!`);
+        alert('You found a '+poke.name.toUpperCase() +'!');
         $('.miss').remove();       
     });
 
