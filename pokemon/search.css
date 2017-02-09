@@ -1,0 +1,19 @@
+#map {
+	width: 500px;
+	height: 500px;
+	background: url("../images/warehouse.jpg") no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+	position: relative;
+}
+
+.crate {
+	position: absolute;
+	height: 50px;
+	width: 50px;
+	background: url("../images/crate-small.png");
+	background-position: center;
+	background-size: cover;
+}
