@@ -4,8 +4,19 @@
         <link rel="stylesheet" href="search.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script src="search.js"></script>
+<style>
+body, html {
+    cursor: url(pokeball.png), pointer;
+}
+</style>
     </head>
     <body>
+<audio id="SaffronCityTheme" src="./SaffronCity.mp3" loop="loop"></audio>
         <div id="map"></div>
     </body> 
+<script>
+window.onload = function() {
+	document.getElementById("SaffronCityTheme").play();
+}
+</script>
 </html>

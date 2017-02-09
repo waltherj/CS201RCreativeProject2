@@ -141,6 +141,7 @@ div {
 </style>
 	</head>
 	<body>
+<audio id="PokemonTheme" src="./pokemontheme.mp3" loop="loop"></audio>
 		    <div id="bg">
 		        <img id = "theImage" src="forest.jpg">
 		    </div>
@@ -154,7 +155,7 @@ div {
 </div>
 
 <p>Discover your Buddy Pokémon</p>
-<div class="pokeball" onclick="location.href='game.html';">
+<div class="pokeball" onclick="location.href='search.html';">
   <div class="top">
     <div class="middle_circle">
         <div class="white_in"></div>
@@ -165,4 +166,11 @@ div {
 
 <p>Capture Pokémons</p>
 	</body>
+<script>
+window.onload = function() {
+	document.getElementById("PokemonTheme").play();
+}
+
+
+</script>
 </html>

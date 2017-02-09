@@ -6,12 +6,35 @@
 body, html {
     cursor: url(pokeball.png), pointer;
 }
+#bg {	
+            position: fixed; 
+            top: -50%; 
+            left: -50%; 
+            width: 200%; 
+            height: 200%;
+    z-index:-1;
+
+          }
+          #bg img {
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            right: 0; 
+            bottom: 0; 
+            margin: auto; 
+            min-width: 50%;
+            min-height: 50%;
+          }
 </style>
 <link href="css/survey.css" type="text/css" rel="stylesheet" />
 <script src="../jquery-3.1.1.min.js"></script>
 <script src="./survey.jquery.min.js"></script>
 	</head>
 	<body>
+<audio id="SaffronCityTheme" src="./SaffronCity.mp3" loop="loop"></audio>
+		    <div id="bg">
+		        <img id = "theImage" src="pika.jpg">
+		    </div>
 <div id="surveyContainer"></div>
 <script>
 var surveyJSON = {
@@ -237,6 +260,9 @@ function sendDataToServer(survey) {
 	var rating = parseInt(j["10"]["1"]);
 	var result = parseInt(binaryString, 2) + rating;
 	window.location = './display.html?num=' + result;
+}
+window.onload = function() {
+	document.getElementById("SaffronCityTheme").play();
 }
 </script>
 	</body>
