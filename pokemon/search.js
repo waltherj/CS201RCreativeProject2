@@ -84,7 +84,8 @@ function getPokemon(div) {
         poke.sprite = data.sprites.front_default;
         div.css('background-image',`url(${poke.sprite})`);
         animateDiv();
-        alert("You found it!");       
+        alert(`You found a ${poke.name}!`);
+        $('.miss').remove();       
     });
 
 }
