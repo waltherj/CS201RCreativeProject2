@@ -12,6 +12,7 @@ $(function(){
 
     $( ".miss" ).click(function() {
         $(this).remove();
+        alert("Not there!");
     });
     $( ".hit" ).click(function() {
         var div = $(this);
@@ -19,7 +20,6 @@ $(function(){
         div.removeClass('crate');
         var pos = div.position();
         var pokemon = getPokemon(div);
-        // $(this).css('background-image',`url(${pokemon.sprite})`);
     });
 });
 
@@ -83,8 +83,9 @@ function getPokemon(div) {
         poke.name = data.forms[0].name;
         poke.sprite = data.sprites.front_default;
         div.css('background-image',`url(${poke.sprite})`);
-        animateDiv();       
-    })
+        animateDiv();
+        alert("You found it!");       
+    });
 
 }
 
