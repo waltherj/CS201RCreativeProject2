@@ -35,8 +35,8 @@ function createHidingSpots(poke) {
 
 function generateLocation(el) {
     $(el).css({
-		"top": Math.floor(Math.random() * ($('#map').height() - 350)) +300,
-		"left": Math.floor(Math.random() * ($('#map').width() - 50))
+		"top": Math.floor(Math.random() * ($('#map img').height() - 250)) +200,
+		"left": Math.floor(Math.random() * ($('#map img').width() - 50))
 	});
 	if (!inLocation(el)) {
 		return;

@@ -1,7 +1,11 @@
 #map {
-	width: 500px;
-	height: 500px;
-	background: url("../images/warehouse.jpg") no-repeat center center fixed; 
+	width:100%;
+}
+
+#map img {
+    width: 800px;
+    margin: auto;
+    background-repeat: no-repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -25,3 +29,4 @@
 	background-position: center;
 	background-size: cover;
 }
+
